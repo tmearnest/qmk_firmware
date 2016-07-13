@@ -22,9 +22,6 @@ extern keymap_config_t keymap_config;
 #define FN_XMONAD    6
 #define FN_FKEYS     7
 #define FN_CTRLENT   8
-#define FN_RALTCOMP  9
-#define FN_LALTCOMP  10
-
 
 // actions for keymap
 #define XMONAD    F(FN_XMONAD)
@@ -35,23 +32,19 @@ extern keymap_config_t keymap_config;
 #define BACKLIGHT F(FN_BACKLIGHT)
 #define CTRLESC   F(FN_CTRLESC)
 #define CTRLENT   F(FN_CTRLENT)
-#define LALTCOMP  F(FN_LALTCOMP)
-#define RALTCOMP  F(FN_RALTCOMP)
 
 #define __________ KC_TRNS
 #define g(x) LGUI(x)
 #define G(x) LGUI(S(x))
 
 const uint16_t PROGMEM fn_actions[] = {
-  [FN_FKEYS]     = ACTION_LAYER_MOMENTARY(KM_FKEYS),
   [FN_LOWER]     = ACTION_LAYER_MOMENTARY(KM_LOWER),
-  [FN_XMONAD]    = ACTION_LAYER_TAP_KEY(KM_XMONAD, KC_LBRACKET),
-  [FN_NUMMOUS]   = ACTION_LAYER_TAP_KEY(KM_NUMMOUS, KC_RBRACKET),
   [FN_RAISE]     = ACTION_LAYER_MOMENTARY(KM_RAISE),
+  [FN_XMONAD]    = ACTION_LAYER_MOMENTARY(KM_XMONAD),
+  [FN_NUMMOUS]   = ACTION_LAYER_MOMENTARY(KM_NUMMOUS),
+  [FN_FKEYS]     = ACTION_LAYER_MOMENTARY(KM_FKEYS),
   [FN_CTRLESC]   = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),
   [FN_CTRLENT]   = ACTION_MODS_TAP_KEY(MOD_RCTL, KC_ENT),
-  [FN_RALTCOMP]  = ACTION_MODS_TAP_KEY(MOD_RALT, KC_APPLICATION),
-  [FN_LALTCOMP]  = ACTION_MODS_TAP_KEY(MOD_LALT, KC_APPLICATION),
   [FN_BACKLIGHT] = ACTION_BACKLIGHT_STEP(),
 };
 
@@ -59,20 +52,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [KM_BASE] = {
     {KC_TAB,     KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,       KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,       KC_BSPC   },
     {CTRLESC,    KC_A,       KC_S,       KC_D,       KC_F,       KC_G,       KC_H,       KC_J,       KC_K,       KC_L,       KC_SCLN,    CTRLENT   },
-    {KC_LSPO,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,       KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SLSH,    KC_RSPC   },
-    {XMONAD,     FKEYS,      KC_LGUI,    LALTCOMP,   LOWER,      KC_SPC,     KC_SPC,     RAISE,      RALTCOMP,   KC_RGUI,    KC_HYPR,    NUMMOUS   }
+    {KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,       KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SLSH,    KC_RSFT   },
+    {XMONAD,     FKEYS,      KC_LGUI,    KC_LALT,    LOWER,      KC_SPC,     KC_SPC,     RAISE,      KC_RALT,    KC_RGUI,    KC_HYPR,    NUMMOUS   }
   },
   [KM_LOWER] = {
     {KC_GRV,     KC_1,       KC_2,       KC_3,       KC_4,       KC_5,       KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_DEL    },
     {__________, __________, __________, KC_EQL,     KC_MINS,    __________, KC_LEFT,    KC_DOWN,    KC_UP,      KC_RGHT,    KC_QUOT,    KC_BSLS   },
-    {__________, __________, __________, __________, __________, __________, __________, __________, __________, __________, __________, __________},
+    {__________, S(KC_COMM), S(KC_LBRC), KC_LBRC,    S(KC_9),    __________, __________, S(KC_0),    KC_RBRC,    S(KC_RBRC), S(KC_DOT),  __________},
     {__________, __________, __________, __________, __________, __________, __________, __________, __________, __________, __________, __________}
   },
   [KM_RAISE] = {
-    {KC_TILD,    KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,    KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_LPRN,    KC_RPRN,    KC_INS    },
+    {KC_TILD,    KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,    KC_CIRC,    KC_AMPR,    KC_ASTR,    __________, __________, KC_INS    },
     {__________, __________, __________, KC_PLUS,    KC_UNDS,    __________, KC_HOME,    KC_PGDN,    KC_PGUP,    KC_END,     KC_DQUO,    KC_PIPE   },
     {__________, __________, __________, __________, __________, __________, __________, __________, __________, __________, __________, __________},
-    {__________, BACKLIGHT,  __________, __________, __________, __________, __________, __________, __________, __________, __________, __________}
+    {BACKLIGHT,  __________, __________, __________, __________, __________, __________, __________, __________, __________, __________, __________}
   },
   [KM_NUMMOUS] = {
     {KC_NLCK,    KC_P7,      KC_P8,      KC_P9,      KC_PMNS,    KC_PSLS,    KC_ACL0,    KC_ACL1,    KC_ACL2,    __________, __________, RESET     },
