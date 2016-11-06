@@ -27,14 +27,13 @@ const uint16_t PROGMEM fn_actions[] = {
   [FN_BACKLIGHT] = ACTION_BACKLIGHT_STEP(),
 };
 
-
 #define _______ KC_TRNS
 #define ___X___ KC_NO
 
-const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  /* Keymap _BL: (Base Layer) Default Layer
+  /*    Generic 60% layout
+   *
    * ,-----------------------------------------------------------.
-   * |~   | 1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|Backsp |
+   * |Esc | 1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|Backsp |
    * |-----------------------------------------------------------|
    * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|  \  |
    * |-----------------------------------------------------------|
@@ -45,6 +44,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |Ctrl|Gui |Alt |      Space            |Alt |Gui |FN  |Ctrl |
    * `-----------------------------------------------------------'
    */
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAYER_BASE] = KEYMAP_ANSI(
   KC_GRV,  KC_1,   KC_2,   KC_3,   KC_4,   KC_5,   KC_6,   KC_7,   KC_8,   KC_9,   KC_0,   KC_MINS, KC_EQL, KC_BSPC, \
   KC_TAB,  KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,   KC_LBRC, KC_RBRC,KC_BSLS, \
@@ -55,8 +56,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [LAYER_FN1] = KEYMAP_ANSI(
   _______, KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,  KC_F7,  KC_F8,  KC_F9,  KC_F10, KC_F11,     KC_F12, KC_DEL,  \
   _______, _______,_______,_______,_______,_______,KC_HOME,KC_PGDN,KC_PGUP,KC_END, _______,_______,    _______,_______, \
-  _______, _______,_______,_______,_______,_______,KC_LEFT,KC_DOWN,KC_UP,  KC_RGHT,KC_WH_U,_______,            _______, \
-  _______,         _______,_______,_______,_______,KC_MS_L,KC_MS_D,KC_MS_U,KC_MS_R,KC_WH_D,_______,            _______, \
+  _______, _______,KC_MUTE,KC_VOLD,KC_VOLU,_______,KC_LEFT,KC_DOWN,KC_UP,  KC_RGHT,KC_WH_U,_______,            _______, \
+  _______,         KC_MPLY,KC_MPRV,KC_MNXT,_______,KC_MS_L,KC_MS_D,KC_MS_U,KC_MS_R,KC_WH_D,_______,            _______, \
   _______, _______,_______,                KC_MS_BTN1,                          KC_MS_BTN3,KC_MS_BTN2, RESET,  _______),
 
 [LAYER_FN2] = KEYMAP_ANSI(
@@ -66,3 +67,4 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,         KC_P1,  KC_P2,  KC_P3,  KC_PENT,_______,_______,_______,_______,_______,_______,         _______, \
   _______, BACKLIGHT, KC_P0,               KC_PDOT,                                _______,_______, _______,_______)
 };
+
